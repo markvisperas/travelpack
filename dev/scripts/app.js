@@ -10,7 +10,7 @@ class App extends React.Component {
     constructor(){
       super();
       this.state = {
-        items: ["sweater", "lotion", "sunglasses", "walking shoes", "belt"],
+        items: ["sweater", "lotion", "sunglasses", "walking shoes", "belt", "sandals"],
         item: ""
       };
       this.handleChange = this.handleChange.bind(this);

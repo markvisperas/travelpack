@@ -5,15 +5,50 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 body {
   background: grey; }
 
-h1, li {
+h1, h2, li {
   color: orange; 
   text-align: center;
 }
 
+li{
+    list-style: none;
+}
+
+.destination-container{
+    height: 100vh;
+    background-image: url(../assets/camping3.jpg);
+    background-size: cover;
+    background-position: center;
+}
+
+.destination-container h1{
+    margin: 0;
+    padding-top: 20%;
+}
+
+.logo{
+    background-image: url(../assets/trillium.png);
+    background-size: cover;
+    background-position: center;
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+}
+
 form{
+    width: 40%;
     text-align: center;
+    margin: 0 auto;
 }
 
 input{
     margin: 0 auto;
 }
+
+.hidden{
+    display: none;
+}
+
+// .hide{
+//     display: none;
+// }

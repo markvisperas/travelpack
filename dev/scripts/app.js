@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import BaggageList from './baggageList';
 import axios from 'axios';
+import StoredItem from './storedItem';
 
 // Initialize Firebase
 var config = {
@@ -20,8 +21,8 @@ class App extends React.Component {
     constructor(){
       super();
       this.state = {
-        items: ["sweater", "sun tan lotion", "sunglasses", "walking shoes", "belt", "sandals", "passport", "foreign currency", "bug spray", "hat", "power charger"],
-        coldItems: ["winter coat", "sweater", "longjohns", "scarff"],
+        items: ["tent", "pillows", "air mattress", "knife", "trekking poles", "lanterns", "folding chair", "frying pan", "maps", "hat", "bugspray"],
+        coldItems: ["winter coat", "extra blankets", "longjohns", "scarff"],
         item: "",
         bagged: [],
         location: "",
@@ -39,9 +40,9 @@ class App extends React.Component {
       this.getWeather = this.getWeather.bind(this);
       this.handleSubmit = this.handleSubmit.bind(this);
       this.movetoBag = this.movetoBag.bind(this);
+      this.removeColdItem = this.removeColdItem.bind(this);
     }
     handleChange(e) {
-      console.log(e.target.value)
       this.setState({
         [e.target.id]: e.target.value
       })
@@ -81,23 +82,34 @@ class App extends React.Component {
 
     handleSubmit(e){
       e.preventDefault();
-      console.log('hello');
       document.getElementById('list-container').classList.remove('hidden');
       this.getWeather();
     }
 
+    removeColdItem(index) {
+      const itemState = Array.from(this.state.coldItems);
+      const removedItem = itemState.splice(index, 1)
+
+      this.setState({
+        coldItems: itemState
+      })
+      this.movetoBag(removedItem[0]);
+    }
+
     removeItem(index) {
-      const itemState = Array.from(this.state.items);
-      itemState.splice(index,1);
+      const itemState = Array.from(this.state.items); 
+      const removedItem = itemState.splice(index, 1)
+
       this.setState({
         items: itemState
       })
+
+      this.movetoBag(removedItem[0]);
     }
 
     movetoBag(itemIndex){
       const packedItem = Array.from(this.state.bagged);
-      const selectItem = item[itemIndex];
-      packedItem.push(selectItem);
+      packedItem.push(itemIndex);
       this.setState({
         bagged: packedItem,
       })
@@ -106,61 +118,65 @@ class App extends React.Component {
       return (
         <div>
           <div className="destination-container">
-            <div className="logo">
-            </div>
             <h1>
-              Ontario Adventures
+              <div className="logo">
+              </div>
+              PACK-IT
             </h1>
-            <h2>Packing App</h2>
+            <h2>Ontario Adventures Pack List</h2>
             <form onSubmit={this.getWeather}>
-              <input type="text" name="destination" value={this.state.destination} id="destination" onChange={this.handleChange}/>
+              <input type="text" name="destination" value={this.state.destination} id="destination" placeholder="which Ontario city?" onChange={this.handleChange}/>
               <button type="submit" onClick={this.handleSubmit}>let's go</button>
             </form>
           </div>
           <div className="list-container hidden" id="list-container">
-            <main>
-              <ul className = "items" id="hotItems">
-                {this.state.items.map((item, i) => {
-                  return <StoredItem data={item} key={`item-${i}`} remove={this.removeItem} itemIndex={i} />
-                })}
-              </ul>
-              { this.state.temperature > 1 
-              ? 
-              <ul className= "coldItems" id="coldItems">
-                {this.state.coldItems.map((item, i) => {
-                  return <StoredItem data={item} key={`item-${i}`} remove={this.removeItem} itemIndex={i} />
-                })}
-              </ul>
-              :
-              null
-              }
-              <form onSubmit={this.packItems}>
-                <button>add item</button>
-                <input type="text" name="pack" value={this.state.item} id="item" onChange={this.handleChange} />
-              </form>
-            </main>
             <aside className="weatherWidget">
-                <div> 
-                  <h1>{this.state.location}</h1>
-                  <img src={this.state.icon} alt=""/>
-                  <h1>{this.state.weatherString}</h1>
-                  <h1>{this.state.uv}</h1>  
-                  <h1>{this.state.temperature} c</h1>
-                </div>
-                <div>
-
-                </div>
+              <div class="weather-container">
+                <h2>{this.state.location}</h2>
+                <img src={this.state.icon} alt="" />
+                <h2>{this.state.weatherString}</h2>
+                <h2>{this.state.uv} uv</h2>
+                <h2>{this.state.temperature} c</h2>
+              </div>
             </aside>
-          </div>
+            <div className="wrapper">
+              <main>
+                <div className="list-wrapper">
+                  <h2>To be Packed</h2>
+                  <ul className = "items" id="hotItems">
+                    {this.state.items.map((item, i) => {
+                      return <StoredItem data={item} key={`item-${i}`} remove={this.removeItem} itemIndex={i} />
+                    })}
+                  </ul>
+                  { this.state.temperature < 5
+                  ? 
+                  <ul className= "coldItems" id="coldItems">
+                    {this.state.coldItems.map((item, i) => {
+                      return <StoredItem data={item} key={`item-${i}`} remove={this.removeColdItem} itemIndex={i} />
+                    })}
+                  </ul>
+                  :
+                  null
+                  }
+                </div>
+                <form onSubmit={this.packItems}>
+                  <button type="submit" id="addItem">add item</button>
+                  <input type="text" name="pack" value={this.state.item} id="item" onChange={this.handleChange} />
+                </form>
+              </main>
+              <div className="backpack">
+                <h2>Packed</h2>
+                <ul className="bagged" id="hotItems">
+                  {this.state.bagged.map((item, i) => {
+                    return <li key={i}>{item}</li>
+                  })}
+                </ul>
+              </div>
+            </div>{/* to close wrapper */}
+          </div>{/* to close list-container */}
         </div>
       )
     }
-}
-
-const StoredItem = (props) => {
-  return (
-    <li>{props.data} <button onClick={() => props.remove((props.itemIndex))}>✔️</button></li>
-  )
 }
 
 ReactDOM.render(<App />, document.getElementById('app'));

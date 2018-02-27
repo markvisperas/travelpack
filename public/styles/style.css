@@ -1,0 +1,314 @@
+article, aside, details, figcaption, figure, footer, header, hgroup, nav, section, summary {
+  display: block; }
+
+audio, canvas, video {
+  display: inline-block; }
+
+audio:not([controls]) {
+  display: none;
+  height: 0; }
+
+[hidden] {
+  display: none; }
+
+html {
+  font-family: sans-serif;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%; }
+
+a:focus {
+  outline: thin dotted; }
+
+a:active, a:hover {
+  outline: 0; }
+
+h1 {
+  font-size: 2em; }
+
+abbr[title] {
+  border-bottom: 1px dotted; }
+
+b, strong {
+  font-weight: 700; }
+
+dfn {
+  font-style: italic; }
+
+mark {
+  background: #ff0;
+  color: #000; }
+
+code, kbd, pre, samp {
+  font-family: monospace, serif;
+  font-size: 1em; }
+
+pre {
+  white-space: pre-wrap;
+  word-wrap: break-word; }
+
+q {
+  quotes: \201C \201D \2018 \2019; }
+
+small {
+  font-size: 80%; }
+
+sub, sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline; }
+
+sup {
+  top: -.5em; }
+
+sub {
+  bottom: -.25em; }
+
+img {
+  border: 0; }
+
+svg:not(:root) {
+  overflow: hidden; }
+
+fieldset {
+  border: 1px solid silver;
+  margin: 0 2px;
+  padding: .35em .625em .75em; }
+
+button, input, select, textarea {
+  font-family: inherit;
+  font-size: 100%;
+  margin: 0; }
+
+button, input {
+  line-height: normal; }
+
+button, html input[type=button], input[type=reset], input[type=submit] {
+  -webkit-appearance: button;
+  cursor: pointer; }
+
+button[disabled], input[disabled] {
+  cursor: default; }
+
+input[type=checkbox], input[type=radio] {
+  box-sizing: border-box;
+  padding: 0; }
+
+input[type=search] {
+  -webkit-appearance: textfield;
+  -moz-box-sizing: content-box;
+  -webkit-box-sizing: content-box;
+  box-sizing: content-box; }
+
+input[type=search]::-webkit-search-cancel-button, input[type=search]::-webkit-search-decoration {
+  -webkit-appearance: none; }
+
+textarea {
+  overflow: auto;
+  vertical-align: top; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+body, figure {
+  margin: 0; }
+
+legend, button::-moz-focus-inner, input::-moz-focus-inner {
+  border: 0;
+  padding: 0; }
+
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: '';
+  clear: both;
+  height: 0; }
+
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box; }
+
+.wrapper {
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between; }
+
+body {
+  background: #dfa335;
+  transition: 0.3s; }
+
+.list-container {
+  margin-bottom: 50px; }
+
+h1 {
+  color: #dfa335;
+  text-align: center;
+  font-family: 'Shrikhand', cursive;
+  font-size: 40px;
+  text-shadow: 5px 10px #3b3b3b; }
+
+h2 {
+  font-family: 'Special Elite', cursive;
+  color: white;
+  margin: 0 auto; }
+
+ul {
+  list-style: none;
+  font-family: 'Special Elite', cursive;
+  text-transform: uppercase; }
+
+.destination-container {
+  height: 100vh;
+  background-image: url(../assets/camping3.jpg);
+  background-size: cover;
+  background-position: center;
+  position: relative; }
+
+.destination-container h1 {
+  font-size: 100px;
+  margin: 0; }
+
+.destination-container h2 {
+  color: white;
+  padding: 10px;
+  text-align: center;
+  margin: 0 auto;
+  text-shadow: 2px 2px #3b3b3b; }
+
+.logo {
+  background-image: url(../assets/trillium.png);
+  background-size: cover;
+  background-position: center;
+  width: 300px;
+  height: 300px;
+  margin: 0 auto; }
+
+.destination-container form {
+  width: 60%;
+  text-align: center;
+  margin: 0 auto; }
+
+input {
+  margin: 0 auto; }
+
+#destination {
+  width: 300px;
+  height: 50px;
+  border-radius: 25px; }
+
+button[type=submit] {
+  height: 50px;
+  background-color: #dfa335;
+  border-style: none;
+  color: white;
+  border-radius: 10px;
+  box-shadow: 5px 5px #3b3b3b;
+  transition: 0.3s ease;
+  margin: 0px 0px 20px 5px; }
+
+button:hover {
+  margin: 2px 0px 20px 5px;
+  box-shadow: 2px 2px #3b3b3b; }
+
+.hidden {
+  display: none; }
+
+.weather-container {
+  display: flex;
+  margin: 0 auto;
+  text-align: center; }
+
+main {
+  width: 45%; }
+
+.wrapper h2 {
+  text-align: center;
+  margin-top: 40px;
+  background-color: olivedrab;
+  padding: 20px; }
+
+.backpack {
+  width: 45%; }
+
+aside {
+  background-color: #cfa14a;
+  width: 50%;
+  margin: 0 auto;
+  margin-top: 40px;
+  padding: 20px;
+  box-shadow: 5px 5px 8px rgba(48, 48, 48, 0.281); }
+
+ul {
+  padding-left: 0; }
+
+li {
+  font-size: 20px;
+  width: 100%;
+  padding: 5px;
+  height: 80px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  color: white;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 5px 5px 8px rgba(48, 48, 48, 0.281);
+  transition: 0.3s all ease; }
+
+li:hover {
+  margin-top: 20px; }
+
+li button {
+  height: 25px;
+  width: 25px;
+  color: black;
+  border-style: none; }
+
+.list-wrapper button {
+  background-image: url(../assets/bag2.png);
+  background-size: cover;
+  background-position: center;
+  background-color: #dfa335; }
+
+#hotItems, #coldItems {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: 100%; }
+
+.list-wrapper {
+  width: 100%; }
+
+#addItem {
+  background-color: olivedrab; }
+
+#item {
+  height: 50px;
+  border-style: none;
+  color: black;
+  border-radius: 25px;
+  width: 80%;
+  margin-left: 10px; }
+
+@media (max-width: 768px) {
+  main {
+    width: 50%; }
+  .backpack {
+    width: 50%; }
+  .destination-container h1 {
+    font-size: 65px;
+    text-shadow: 5px 5px #3b3b3b; }
+  .destination-container form {
+    width: 80%; }
+  aside {
+    width: 100%; } }
+
+@media (max-width: 480px) {
+  .wrapper {
+    width: 100%; }
+  .destination-container {
+    background-image: url(../assets/camping4.jpg); } }
